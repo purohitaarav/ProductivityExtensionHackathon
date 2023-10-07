@@ -1,0 +1,60 @@
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+.heading {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.input-div {
+    margin-bottom: 10px;
+}
+
+.task-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.task-btn {
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.task-btn-submit {
+    background-color: #4caf50;
+}
+
+.task-btn-clear {
+    background-color: #ff5722;
+}
+
+.tasks-list, #completedTasks {
+    list-style-type: none;
+    padding: 0;
+}
+
+.tasks-list li, #completedTasks li {
+    background-color: #fff;
+    margin-bottom: 5px;
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.completed {
+    background-color: #cfd8dc;
+    text-decoration: line-through;
+}
