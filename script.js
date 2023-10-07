@@ -27,8 +27,29 @@ const updateView = () => {
     });
 };
 
+const addTask = (isDone) => {
+    const task = document.getElementById("task-input").value;
+    if (task.trim() === "") return;
 
-// ... (other functions remain the same) ...
+    taskArr.push({ task, isDone });
+    localStorage.setItem("savedTasks", JSON.stringify(taskArr));
+    updateView();
+
+    const taskInput = document.getElementById("task-input");
+    taskInput.value = "";
+};
+
+const toggleTaskStatus = (index) => {
+    taskArr[index].isDone = !taskArr[index].isDone;
+    localStorage.setItem("savedTasks", JSON.stringify(taskArr));
+    updateView();
+};
+
+const clearCompletedTasks = () => {
+    taskArr = taskArr.filter((task) => !task.isDone);
+    localStorage.setItem("savedTasks", JSON.stringify(taskArr));
+    updateView();
+};
 
 document.addEventListener("DOMContentLoaded", () => {
     const savedTasks = JSON.parse(localStorage.getItem("savedTasks"));
@@ -45,12 +66,4 @@ document.getElementById("task-clear-btn").addEventListener("click", () => {
 });
 
 // Event listener for clearing all completed tasks
-document.getElementById('clearCompletedButton').addEventListener('click', function () {
-    const completedTasksList = document.getElementById('completedTasks');
-    while (completedTasksList.firstChild) {
-        completedTasksList.removeChild(completedTasksList.firstChild);
-    }
-    saveTasks(); // Update local storage after clearing completed tasks
-});
-
-// ... (saveTasks and loadTasks functions remain the same) ...
+document.getElementById('clearCompletedButton').addEventListener('click', () => clearCompletedTasks())
