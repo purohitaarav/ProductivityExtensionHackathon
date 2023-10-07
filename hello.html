@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,20 +19,192 @@
         input[type="checkbox"] {
             margin-right: 10px;
         }
+
+        #addTaskButton {
+            margin-top: 10px;
+        }
+
+        #completedList {
+            border-top: 1px solid #ccc;
+            margin-top: 20px;
+        }
+
+        #clearCompletedButton {
+            margin-top: 10px;
+        }
+
+        .editInput {
+            display: none;
+        }
     </style>
 </head>
 <body>
     <h1>To-Do List</h1>
+    <input type="text" id="newTaskInput" placeholder="Enter a new task">
+    <button id="addTaskButton">Add Task</button>
+
     <ul id="todoList">
-        <li><input type="checkbox"> Task 1</li>
-        <li><input type="checkbox"> Task 2</li>
-        <li><input type="checkbox"> Task 3</li>
+        <!-- Existing tasks will be added here -->
     </ul>
 
+    <div id="completedList">
+        <h2>Completed</h2>
+        <button id="clearCompletedButton">Clear All</button>
+        <ul id="completedTasks">
+            <!-- Completed tasks will be added here -->
+        </ul>
+    </div>
+
     <script>
-        document.getElementById('todoList').addEventListener('change', function(event) {
-            if (event.target.type === 'checkbox') {
-                event.target.parentElement.classList.toggle('completed');
+        document.addEventListener('DOMContentLoaded', function () {
+            // Load tasks from local storage on page load
+            loadTasks();
+
+            // Event listener for the Add Task button
+            document.getElementById('addTaskButton').addEventListener('click', addTask);
+
+            // Event listener for pressing "Enter" key to add a task
+            document.getElementById('newTaskInput').addEventListener('keyup', function (event) {
+                if (event.key === 'Enter') {
+                    addTask();
+                }
+            });
+
+            // Event listener for marking tasks as completed
+            document.getElementById('todoList').addEventListener('change', function (event) {
+                if (event.target.type === 'checkbox') {
+                    const taskItem = event.target.parentElement;
+                    if (event.target.checked) {
+                        // Move completed task to the completed section
+                        document.getElementById('completedTasks').appendChild(taskItem);
+                        taskItem.classList.add('completed');
+                    } else {
+                        // Move incomplete task back to the todo list
+                        document.getElementById('todoList').appendChild(taskItem);
+                        taskItem.classList.remove('completed');
+                    }
+
+                    // Save tasks to local storage
+                    saveTasks();
+                }
+            });
+
+            // Event listener for clearing all completed tasks
+            document.getElementById('clearCompletedButton').addEventListener('click', function () {
+                const completedTasksList = document.getElementById('completedTasks');
+                while (completedTasksList.firstChild) {
+                    completedTasksList.removeChild(completedTasksList.firstChild);
+                }
+                saveTasks(); // Update local storage after clearing completed tasks
+            });
+
+            // Function to save tasks to local storage
+            function saveTasks() {
+                const tasks = [];
+                const completedTasks = [];
+                const taskItems = document.querySelectorAll('#todoList li, #completedTasks li');
+                taskItems.forEach(function (taskItem) {
+                    const taskText = taskItem.querySelector('.taskText').textContent.trim();
+                    const isCompleted = taskItem.classList.contains('completed');
+                    if (isCompleted) {
+                        completedTasks.push({ text: taskText, completed: true });
+                    } else {
+                        tasks.push({ text: taskText, completed: false });
+                    }
+                });
+
+                localStorage.setItem('tasks', JSON.stringify(tasks));
+                localStorage.setItem('completedTasks', JSON.stringify(completedTasks));
+            }
+
+            // Function to load tasks from local storage
+            function loadTasks() {
+                const storedTasks = localStorage.getItem('tasks');
+                if (storedTasks) {
+                    const tasks = JSON.parse(storedTasks);
+                    const todoList = document.getElementById('todoList');
+                    tasks.forEach(function (task) {
+                        addTaskToList(todoList, task.text, false);
+                    });
+                }
+
+                const storedCompletedTasks = localStorage.getItem('completedTasks');
+                if (storedCompletedTasks) {
+                    const completedTasks = JSON.parse(storedCompletedTasks);
+                    const completedTasksList = document.getElementById('completedTasks');
+                    completedTasks.forEach(function (task) {
+                        addTaskToList(completedTasksList, task.text, true);
+                    });
+                }
+            }
+
+            // Function to add a task to a list
+            function addTaskToList(list, text, completed) {
+                const taskItem = document.createElement('li');
+                taskItem.innerHTML = `
+                    <input type="checkbox" ${completed ? 'checked' : ''}>
+                    <span class="taskText">${text}</span>
+                    <button class="editButton">Edit</button>
+                `;
+                list.appendChild(taskItem);
+
+                // Event listener for editing a task
+                const editButton = taskItem.querySelector('.editButton');
+                editButton.addEventListener('click', function () {
+                    const taskTextElement = taskItem.querySelector('.taskText');
+                    const editInput = document.createElement('input');
+                    editInput.type = 'text';
+                    editInput.value = taskTextElement.textContent;
+                    editInput.classList.add('editInput');
+                    taskTextElement.style.display = 'none';
+                    taskItem.insertBefore(editInput, editButton);
+                    editInput.focus();
+
+                    // Event listener for saving edited task
+                    editInput.addEventListener('blur', function () {
+                        const editedText = editInput.value.trim();
+                        if (editedText !== '') {
+                            taskTextElement.textContent = editedText;
+                        }
+                        editInput.parentNode.removeChild(editInput);
+                        taskTextElement.style.display = 'inline';
+                        saveTasks();
+                    });
+
+                    // Prevent the "Edit" button click event from firing
+                    editButton.disabled = true;
+                });
+
+                // Event listener for marking a task as completed
+                const checkbox = taskItem.querySelector('input[type="checkbox"]');
+                checkbox.addEventListener('change', function () {
+                    const taskItem = checkbox.parentElement;
+                    if (checkbox.checked) {
+                        // Move completed task to the completed section
+                        document.getElementById('completedTasks').appendChild(taskItem);
+                        taskItem.classList.add('completed');
+                    } else {
+                        // Move incomplete task back to the todo list
+                        document.getElementById('todoList').appendChild(taskItem);
+                        taskItem.classList.remove('completed');
+                    }
+
+                    // Save tasks to local storage
+                    saveTasks();
+                });
+            }
+
+            // Function to add a task
+            function addTask() {
+                const newTaskInput = document.getElementById('newTaskInput');
+                const taskText = newTaskInput.value.trim();
+
+                if (taskText !== '') {
+                    const todoList = document.getElementById('todoList');
+                    addTaskToList(todoList, taskText, false);
+                    newTaskInput.value = ''; // Clear the input field
+                    saveTasks(); // Save tasks to local storage
+                }
             }
         });
     </script>
