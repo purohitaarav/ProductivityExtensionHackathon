@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>To-Do List</h1>
+    <ul id="todoList">
+        <li><input type="checkbox"> Task 1</li>
+        <li><input type="checkbox"> Task 2</li>
+        <li><input type="checkbox"> Task 3</li>
+    </ul>
+
+    <script>
+        document.getElementById('todoList').addEventListener('change', function(event) {
+            if (event.target.type === 'checkbox') {
+                event.target.parentElement.classList.toggle('completed');
+            }
+        });
+    </script>
+</body>
+</html>
