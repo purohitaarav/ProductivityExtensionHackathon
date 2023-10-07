@@ -27,23 +27,6 @@ const updateView = () => {
     });
 };
 
-const addTask = (isDone) => {
-    const task = document.getElementById("task-input").value;
-    if (task.trim() === "") return;
-
-    taskArr.push({ task, isDone });
-    localStorage.setItem("savedTasks", JSON.stringify(taskArr));
-    updateView();
-
-    const taskInput = document.getElementById("task-input");
-    taskInput.value = "";
-};
-
-const toggleTaskStatus = (index) => {
-    taskArr[index].isDone = !taskArr[index].isDone;
-    localStorage.setItem("savedTasks", JSON.stringify(taskArr));
-    updateView();
-};
 
 // ... (other functions remain the same) ...
 
