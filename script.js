@@ -1,5 +1,5 @@
 var taskArr = [];
-
+//dfger
 const updateView = () => {
     const todoList = document.getElementById("todoList");
     const completedTasks = document.getElementById("completedTasks");
@@ -23,7 +23,7 @@ const updateView = () => {
             completedTasks.appendChild(newTask);
         } else {
             todoList.appendChild(newTask);
-        }
+        }``
     });
 };
 
