@@ -5,47 +5,55 @@ body {
     margin: 0;
     padding: 40px;
     border-radius: 20px;
-}
-
-.heading {
+ }
+ 
+ 
+ .heading {
     font-size: 25px;
     color: #333;
     margin-bottom: 10px;
-}
-
-.input-div {
+ }
+ 
+ 
+ .input-div {
     margin-bottom: 10px;
-}
-
-.task-input {
+ }
+ 
+ 
+ .task-input {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 20px;
-}
-
-.task-btn {
+ }
+ 
+ 
+ .task-btn {
     padding: 8px 16px;
     border: none;
     cursor: pointer;
     border-radius: 10px;
     color: #fff;
     font-weight: bold;
-}
-
-.task-btn-submit {
+ }
+ 
+ 
+ .task-btn-submit {
     background-color: #4caf50;
-}
-
-.task-btn-clear {
+ }
+ 
+ 
+ .task-btn-clear {
     background-color: #ff0000;
-}
-
-.tasks-list, #completedTasks {
+ }
+ 
+ 
+ .tasks-list, #completedTasks {
     list-style-type: none;
     padding: 0;
-}
-
-.tasks-list li, #completedTasks li {
+ }
+ 
+ 
+ .tasks-list li, #completedTasks li {
     background-color: #fff;
     margin-bottom: 5px;
     padding: 10px;
@@ -53,9 +61,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.completed {
+ }
+ 
+ 
+ .completed {
     background-color: #cfd8dc;
     text-decoration: line-through;
-}
+ }
+ 

@@ -1,103 +1,101 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Task Manager</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <!-- <script src="script.js"></script> -->
-    
+   <title>Task Manager</title>
+   <link rel="stylesheet" type="text/css" href="styles.css">
+   <!-- <script src="script.js"></script> -->
 </head>
 <body>
-    <h1>Task Manager</h1>
-    <div id="tabs">
-        <button id="todoTab" onclick="showTodoTab()">To-Do List</button>
-        <button id="pomodoroTab" onclick="showPomodoroTab()">Pomodoro Timer</button>
-    </div>
+   <h1>Task Manager</h1>
 
-    <!-- To-Do List Tab -->
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Colorful TODO List</title>
-        <link rel="stylesheet" href="styles.css">
-        <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300&display=swap" rel="stylesheet">
-        <style>
-            ul {
-                list-style-type: none; /* Remove bullet points */
-            }
-        </style>
-    </head>
-    <body>
-        <div class="heading">My Colorful TODO List</div>
-        <div class="input-div">
-            <input type="text" id="task-input" class="task-input" placeholder="Enter a task to fulfill"/>
-            <button id="task-submit-btn" class="task-btn task-btn-submit">Add</button>
-        </div>
-    
-        <ul class="tasks-list" id="todoList">
-            <!-- To Do tasks are added here -->
-        </ul>
-        <div class="task-clear-div">
-            <button id="task-clear-btn" class="task-btn task-btn-clear">Clear All</button>
-        </div>
-    
-        <div id="completedList">
-            <h2>Completed</h2>
-            <button id="clearCompletedButton" class="task-btn task-btn-clear">Clear All</button>
-            <ul id="completedTasks">
-                <!-- Completed tasks are added here -->
-            </ul>
-        </div>
-    
-        <!-- Paste your To-Do List HTML code here, including the script tag -->
-        <!-- Example:
-        <div class="heading">My Colorful TODO List</div>
-        <div class="input-div">
-            ...
-        </div>
-        <ul class="tasks-list" id="todoList">
-            ...
-        </ul>
-        <div class="task-clear-div">
-            ...
-        </div>
-        <div id="completedList">
-            ...
-        </div>
-        <script src="script.js"></script>
-        -->
-    </div>
 
-    <!-- Pomodoro Timer  -->
-        <h1>Pomodoro Timer</h1>
-        <div id="timer">25:00</div>
-        <div id="controls">
-            <button id="start">Start</button>
-            <button id="stop">Stop</button>
-            <button id="reset">Reset</button>
-            <!-- <button id="set">Set</button>  -->
-        </div>
-        <div id="input-form">
-            <label for="studyMinutes">Study Session (minutes):</label>
-            <input type="number" id="studyMinutes" min="1" value=25>
-            <label for="breakMinutes">Break (minutes):</label>
-            <input type="number" id="breakMinutes" min="1" value="5">
-        </div>
-        <script src="script.js"></script>
-    </body>
-        <!-- Paste your Pomodoro Timer HTML code here, including the script tag -->
-        <!-- Example:
-        <h1>Pomodoro Timer</h1>
-        <div id="timer">25:00</div>
-        <div id="controls">
-            ...
-        </div>
-        <div id="input-form">
-            ...
-        </div>
-        <script src="pomodoro.js"></script>
-        -->
-    </div>
+
+   <!-- To-Do List Tab -->
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Colorful TODO List</title>
+       <link rel="stylesheet" href="styles.css">
+       <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300&display=swap" rel="stylesheet">
+       <style>
+           ul {
+               list-style-type: none; /* Remove bullet points */
+           }
+       </style>
+   </head>
+   <body>
+       <div class="heading">My Colorful TODO List</div>
+       <div class="input-div">
+           <input type="text" id="task-input" class="task-input" placeholder="Enter a task to fulfill"/>
+           <button id="task-submit-btn" class="task-btn task-btn-submit">Add</button>
+       </div>
+  
+       <ul class="tasks-list" id="todoList">
+           <!-- To Do tasks are added here -->
+       </ul>
+       <div class="task-clear-div">
+           <button id="task-clear-btn" class="task-btn task-btn-clear">Clear All</button>
+       </div>
+  
+       <div id="completedList">
+           <h2>Completed</h2>
+           <button id="clearCompletedButton" class="task-btn task-btn-clear">Clear All</button>
+           <ul id="completedTasks">
+               <!-- Completed tasks are added here -->
+           </ul>
+       </div>
+  
+       <!-- Paste your To-Do List HTML code here, including the script tag -->
+       <!-- Example:
+       <div class="heading">My Colorful TODO List</div>
+       <div class="input-div">
+           ...
+       </div>
+       <ul class="tasks-list" id="todoList">
+           ...
+       </ul>
+       <div class="task-clear-div">
+           ...
+       </div>
+       <div id="completedList">
+           ...
+       </div>
+       <script src="script.js"></script>
+       -->
+   </div>
+
+
+   <!-- Pomodoro Timer  -->
+       <h1>Pomodoro Timer</h1>
+       <div id="timer">25:00</div>
+       <div id="controls">
+           <button id="start">Start</button>
+           <button id="stop">Stop</button>
+           <button id="reset">Reset</button>
+           <!-- <button id="set">Set</button>  -->
+       </div>
+       <div id="input-form">
+           <label for="studyMinutes">Study Session (minutes):</label>
+           <input type="number" id="studyMinutes" min="1" value=25>
+           <label for="breakMinutes">Break (minutes):</label>
+           <input type="number" id="breakMinutes" min="1" value="5">
+       </div>
+       <script src="script.js"></script>
+   </body>
+       <!-- Paste your Pomodoro Timer HTML code here, including the script tag -->
+       <!-- Example:
+       <h1>Pomodoro Timer</h1>
+       <div id="timer">25:00</div>
+       <div id="controls">
+           ...
+       </div>
+       <div id="input-form">
+           ...
+       </div>
+       <script src="pomodoro.js"></script>
+       -->
+   </div>
+
 
 </body>
 </html>
-
