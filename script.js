@@ -97,6 +97,7 @@ let minutes = studyMinutes;
 let seconds = 0;
 let isRunning = false;
 let isBreak = false;
+let count = false; 
 
 
 function updateDisplay() {
@@ -113,7 +114,14 @@ function startTimer() {
    if (!isNaN(customStudyMinutes) && customStudyMinutes > 0 && !isNaN(customBreakMinutes) && customBreakMinutes > 0) {
        studyMinutes = customStudyMinutes;
        breakMinutes = customBreakMinutes;
-       resetTimer();
+        if(!count){
+            resetTimer();
+            count = true;
+        }
+        else{
+            minutes= breakMinutes;
+            count = false;
+        }
    }
    if (!isRunning) {
        isRunning = true;
@@ -122,9 +130,13 @@ function startTimer() {
                clearInterval(timer);
                isRunning = false;
                if (isBreak) {
-                   alert('Break time is over. Get back to work!');
+                //    alert('Break time is over. Get back to work!');
+                   let audio = new Audio("audio.mp3")
+                    audio.play();
                } else {
-                   alert('Pomodoro completed! Take a break.');
+                //    alert('Pomodoro completed! Take a break.');
+                   let audio = new Audio("audio.mp3")
+                    audio.play();
                }
                isBreak = !isBreak;
                if (isBreak) {
