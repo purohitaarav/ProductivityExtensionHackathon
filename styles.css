@@ -1,6 +1,6 @@
 body {
     font-family: 'SF Pro Text',-apple-system,BlinkMacSystemFont,Roboto,'Segoe UI',Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
-    background-color: #95ccec;
+    background-color: #161818;
     text-align: center;
     margin: 0;
     padding: 40px;
@@ -10,51 +10,58 @@ body {
  
  .heading {
     font-size: 25px;
-    color: #333;
+    color: #f1ecec;
+    font-weight: bold;
     margin-bottom: 10px;
  }
  
  
  .input-div {
     margin-bottom: 10px;
+    color: #f1ecec;
  }
  
  
  .task-input {
     padding: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid #f0f1f0;
+    color: #f1ecec;
     border-radius: 20px;
  }
- 
+ #controls {
+    margin-top: 30px;
+}
  
  .task-btn {
     padding: 8px 16px;
     border: none;
     cursor: pointer;
     border-radius: 10px;
-    color: #fff;
+    color: #cecaca;
     font-weight: bold;
  }
  
  
  .task-btn-submit {
-    background-color: #4caf50;
+    background-color: #4ba6e3;
  }
  
  
  .task-btn-clear {
-    background-color: #ff0000;
+    background-color: #1e1bcd;
  }
  
  
  .tasks-list, #completedTasks {
     list-style-type: none;
+    color: #f1ecec;
     padding: 0;
  }
  
  
  .tasks-list li, #completedTasks li {
     background-color: #fff;
+    color: #0c0b0b;
     margin-bottom: 5px;
     padding: 10px;
     border-radius: 10px;
@@ -62,10 +69,79 @@ body {
     justify-content: space-between;
     align-items: center;
  }
- 
+ #controls {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#start,
+#stop,
+#reset {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 10px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#start:hover,
+#stop:hover,
+#reset:hover {
+    background-color: #2980b9;
+}
  
  .completed {
     background-color: #cfd8dc;
     text-decoration: line-through;
  }
+
+
+ #timer {
+    font-size: 36px;
+    color: #f1ecec;
+}
+#input-form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+label {
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+ 
+ /* Add this to your existing CSS or styles.css */
+
+/* Add this to your existing CSS or styles.css */
+
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 100px;
+    color: #f1ecec;
+}
+
+
+
+
+
+
+
+
  
