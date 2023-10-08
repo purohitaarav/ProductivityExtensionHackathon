@@ -86,6 +86,14 @@ function updateDisplay() {
 }
 
 function startTimer() {
+
+    const customStudyMinutes = parseInt(document.getElementById('studyMinutes').value);
+    const customBreakMinutes = parseInt(document.getElementById('breakMinutes').value);
+    if (!isNaN(customStudyMinutes) && customStudyMinutes > 0 && !isNaN(customBreakMinutes) && customBreakMinutes > 0) {
+        studyMinutes = customStudyMinutes;
+        breakMinutes = customBreakMinutes;
+        resetTimer();
+    } 
     if (!isRunning) {
         isRunning = true;
         timer = setInterval(() => {
@@ -116,8 +124,8 @@ function startTimer() {
             }
         }, 1000);
     }
-}
 
+}
 function stopTimer() {
     clearInterval(timer);
     isRunning = false;
@@ -132,20 +140,11 @@ function resetTimer() {
     updateDisplay();
 }
 
-function setCustomTimer() {
-    const customStudyMinutes = parseInt(document.getElementById('studyMinutes').value);
-    const customBreakMinutes = parseInt(document.getElementById('breakMinutes').value);
-    if (!isNaN(customStudyMinutes) && customStudyMinutes > 0 && !isNaN(customBreakMinutes) && customBreakMinutes > 0) {
-        studyMinutes = customStudyMinutes;
-        breakMinutes = customBreakMinutes;
-        resetTimer();
-        alert(`Custom Pomodoro timer set for ${studyMinutes} minutes (study) and ${breakMinutes} minutes (break).`);
-    } else {
-        alert('Please enter valid durations for study and break sessions.');
-    }
-}
 
-document.getElementById("start").addEventListener("click", startTimer());
+
+document.getElementById("start").addEventListener("click", startTimer);
+document.getElementById("stop").addEventListener("click", stopTimer);
+document.getElementById("reset").addEventListener("click", resetTimer);
 
 function myFunction(){
   console.log('asd');
